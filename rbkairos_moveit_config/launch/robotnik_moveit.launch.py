@@ -144,8 +144,6 @@ def generate_launch_description():
         executable="move_group",
         namespace="robot",
         output="screen",
-        # remappings=[("/joint_states", "/robot/joint_states")],
-        # remappings=[("/robot/robot/joint_states", "/robot/joint_states")],
         parameters=[
             use_sim_time,
             robot_description,
