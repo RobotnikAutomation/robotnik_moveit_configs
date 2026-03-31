@@ -24,6 +24,8 @@ def generate_launch_description():
     with open(srdf_path, "r") as f:
         robot_description_semantic_content = f.read()
 
+    default_moveit_configs= "/opt/ros/jazzy/share/moveit_configs_utils/"
+
     # Define the path to the xacro file using the package
     xacro_file = PathJoinSubstitution([
         FindPackageShare("robotnik_description"),
@@ -85,23 +87,37 @@ def generate_launch_description():
                 "default_planning_response_adapters/AddTimeOptimalParameterization",
             ],
             "start_state_max_bounds_error": 0.1,
-            **load_yaml(moveit_config_pkg, "config/ompl_planning.yaml"),
+            **load_yaml(default_moveit_configs, "default_configs/ompl_planning.yaml"),
+            # **load_yaml(moveit_config_pkg, "config/ompl_planning.yaml"),
         }
     }
+
 
     pilz_industrial_motion_planner_yaml = {
         "pilz_industrial_motion_planner": {
             "default_planner_config": "PTP",
-            **load_yaml(moveit_config_pkg, "config/pilz_industrial_motion_planner_planning.yaml"),
+            **load_yaml(default_moveit_configs, "default_configs/pilz_industrial_motion_planner_planning.yaml"),
+            # **load_yaml(moveit_config_pkg, "config/pilz_industrial_motion_planner_planning.yaml"),
         },
         "robot_description_planning": {
             **load_yaml(moveit_config_pkg, "config/pilz_cartesian_limits.yaml"),
         }
     }
     
+    stomp_yaml = {
+        "stomp": {
+            **load_yaml(default_moveit_configs, "default_configs/stomp_planning.yaml"),
+        }
+    }
+
+    chomp_yaml = {
+        "chomp": {
+            **load_yaml(default_moveit_configs, "default_configs/chomp_planning.yaml"),
+        }
+    }
 
     planning_pipeline_config = {
-        "planning_pipelines": ["pilz_industrial_motion_planner"],#, "chomp", "pilz_industrial_motion_planner", "stomp"],
+        "planning_pipelines": ["ompl", "chomp", "pilz_industrial_motion_planner", "stomp"],
         "default_planning_pipeline": "pilz_industrial_motion_planner",
     }
 
@@ -126,17 +142,20 @@ def generate_launch_description():
     move_group_node = Node(
         package="moveit_ros_move_group",
         executable="move_group",
-        # namespace="robot",
+        namespace="robot",
         output="screen",
-        remappings=[("/joint_states", "/robot/joint_states")],
+        # remappings=[("/joint_states", "/robot/joint_states")],
+        # remappings=[("/robot/robot/joint_states", "/robot/joint_states")],
         parameters=[
             use_sim_time,
             robot_description,
             robot_description_semantic,
             robot_description_kinematics,
             joint_limits_yaml,
-            # ompl_yaml,
+            ompl_yaml,
             pilz_industrial_motion_planner_yaml,
+            stomp_yaml,
+            chomp_yaml,
             controllers_yaml,
             planning_pipeline_config,
             trajectory_execution,
@@ -148,18 +167,18 @@ def generate_launch_description():
         package="rviz2",
         executable="rviz2",
         name="rviz2",
-        # namespace="robot",
         output="screen",
         arguments=["-d", rviz_config_path],
-        remappings=[("/joint_states", "/robot/joint_states")],
         parameters=[
             use_sim_time,
             robot_description,
             robot_description_semantic,
             robot_description_kinematics,
             joint_limits_yaml,
-            # ompl_yaml,
+            ompl_yaml,
             pilz_industrial_motion_planner_yaml,
+            stomp_yaml,
+            chomp_yaml
         ],
     )
 
