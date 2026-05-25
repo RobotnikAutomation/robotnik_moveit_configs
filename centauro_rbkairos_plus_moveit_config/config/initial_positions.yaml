@@ -1,4 +1,4 @@
-# Default initial positions for rbkairos_plus's ros2_control fake system
+# Default initial positions for centauro_rbkairos_plus's ros2_control fake system
 
 initial_positions:
   robot_arm_elbow_joint: 0

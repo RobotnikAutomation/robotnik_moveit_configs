@@ -7,8 +7,8 @@ moveit_setup_assistant_config:
     relative_path: config/rbkairos_plus.srdf
   package_settings:
     author_name: Robotnik Developers
-    author_email: ros-developers@robotnik.es
-    generated_timestamp: 1777561699
+    author_email: "ros-developers@robotnik.es\n"
+    generated_timestamp: 1779696745
   control_xacro:
     command:
       - position

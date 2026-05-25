@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(centauro_rbkairos_moveit_config)
+project(centauro_rbkairos_plus_moveit_config)
 
 find_package(ament_cmake REQUIRED)
 
