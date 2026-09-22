@@ -1,0 +1,48 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits, has_jerk_limits]
+# Joint limits set from this config: https://frankaemika.github.io/docs/control_parameters.html
+
+joint_limits:
+  robot_arm_elbow_joint:
+    has_velocity_limits: true
+    max_velocity: 3.1415926535897931
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
+  robot_arm_shoulder_lift_joint:
+    has_velocity_limits: true
+    max_velocity: 2.0943951023931953
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
+  robot_arm_shoulder_pan_joint:
+    has_velocity_limits: true
+    max_velocity: 2.0943951023931953
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
+  robot_arm_wrist_1_joint:
+    has_velocity_limits: true
+    max_velocity: 3.1415926535897931
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
+  robot_arm_wrist_2_joint:
+    has_velocity_limits: true
+    max_velocity: 3.1415926535897931
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
+  robot_arm_wrist_3_joint:
+    has_velocity_limits: true
+    max_velocity: 3.1415926535897931
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+    has_jerk_limits: true
+    max_jerk: 300.0
