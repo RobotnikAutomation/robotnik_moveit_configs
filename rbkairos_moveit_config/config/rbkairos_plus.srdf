@@ -33,17 +33,17 @@
         <joint name="robot_arm_elbow_joint" value="-0.5469618439674377"/>
         <joint name="robot_arm_shoulder_lift_joint" value="-1.749136587182516"/>
         <joint name="robot_arm_shoulder_pan_joint" value="0.16454486548900604"/>
-        <joint name="robot_arm_wrist_1_joint" value="-1.4660765716752369"/>
-        <joint name="robot_arm_wrist_2_joint" value="1.5533430342749532"/>
-        <joint name="robot_arm_wrist_3_joint" value="0.017453292519943295"/>
+        <joint name="robot_arm_wrist_1_joint" value="-2.4186274013915003"/>
+        <joint name="robot_arm_wrist_2_joint" value="1.5734022855758667"/>
+        <joint name="robot_arm_wrist_3_joint" value="0.28253501653671265"/>
     </group_state>
     <group_state name="neutral" group="arm">
         <joint name="robot_arm_elbow_joint" value="-1.8849555921538759"/>
         <joint name="robot_arm_shoulder_lift_joint" value="-1.361356816555577"/>
         <joint name="robot_arm_shoulder_pan_joint" value="0.017453292519943295"/>
-        <joint name="robot_arm_wrist_1_joint" value="-1.57"/>
-        <joint name="robot_arm_wrist_2_joint" value="-1.57"/>
-        <joint name="robot_arm_wrist_3_joint" value="0"/>
+        <joint name="robot_arm_wrist_1_joint" value="-1.4660765716752369"/>
+        <joint name="robot_arm_wrist_2_joint" value="1.5533430342749532"/>
+        <joint name="robot_arm_wrist_3_joint" value="0.017453292519943295"/>
     </group_state>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="arm_base_joint" type="fixed" parent_frame="robot_base_link" child_link="robot_arm_base_link"/>
